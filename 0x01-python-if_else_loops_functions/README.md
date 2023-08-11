@@ -108,3 +108,14 @@ Prototype: def print_last_digit(number):
 Returns the value of the last digit
 You are not allowed to import any module
 You don’t need to understand __import__
+
+
+TASK: 10. a + b
+mandatory
+Score: 0.0% (Checks completed: 0.0%)
+Write a function that adds two integers and returns the result.
+
+Prototype: def add(a, b):
+Returns the value of a + b
+You are not allowed to import any module
+You don’t need to understand __import__
