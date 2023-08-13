@@ -96,4 +96,22 @@ TASK: 7. Easy print
 Write a program that prints #pythoniscool, followed by a new line, in the standard output.
 
 Your program should be maximum 2 lines long
-You are not allowed to use print or eval or open or import sys in your file 101-easy_print.py`
+You are not allowed to use print or eval or open or import sys in your file 101-easy_print.py
+
+
+TASK: 8. ByteCode -> Python #3
+#advanced
+Write the Python function def magic_calculation(a, b): that does exactly the same as the following Python bytecode:
+
+
+TASK: 9. Fast alphabet
+#advanced
+Write a program that prints the alphabet in uppercase, followed by a new line.
+
+Your program should be maximum 3 lines long
+You are not allowed to use:
+any loops
+any conditional statements
+str.join()
+any string literal
+any system calls
