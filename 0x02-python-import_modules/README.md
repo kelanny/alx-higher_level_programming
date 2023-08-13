@@ -53,4 +53,11 @@ The output should be the result of the addition of all arguments, followed by a 
 You can cast arguments into integers by using int() (you can assume that all arguments can be casted into integers)
 Your code should not be executed when imported
 
-TASK: 
+TASK: 4. Who are you?
+mandatory
+Write a program that prints all the names defined by the compiled module hidden_4.pyc (please download it locally).
+
+You should print one name per line, in alpha order
+You should print only names that do not start with __
+Your code should not be executed when imported
+Make sure you are running your code in Python3.8.x (hidden_4.pyc has been compiled with this version) 
