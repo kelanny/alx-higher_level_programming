@@ -12,10 +12,12 @@ class Square:
             size (int): The size of the sides of the square.
         """
         self.size = size
+
     @property
     def size(self):
         """Retrieve the current size of the square."""
         return (self.__size)
+
     @size.setter
     def size(self, value):
         """Change the current size of the square."""
@@ -24,7 +26,7 @@ class Square:
         elif value < 0:
             raise ValueError("Size must be >= 0")
         self.__size = value
-        
+
     def area(self):
         """ Returns the area of a the square."""
         return (self.__size * self.__size)
