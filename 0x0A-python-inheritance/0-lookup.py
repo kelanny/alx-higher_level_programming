@@ -16,6 +16,6 @@ def lookup(obj):
         A list of all methods and attributes of an object.
 
     """
-    attr_and_mthds = dir(obj)
-    fil_att_n_mthds = [att for att in attr_and_mthds if not att.startswith("_")]
+    att_n_mthds = dir(obj)
+    fil_att_n_mthds = [att for att in att_n_mthds if not att.startswith("_")]
     return (fil_att_n_mthds)
