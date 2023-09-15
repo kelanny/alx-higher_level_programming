@@ -51,6 +51,7 @@ The parameter ``size`` must be an integer. Otherwise, a TypeError is raised.
 
     >>> print_square("not an int")
     Traceback (most recent call last):
+		...
     TypeError: size must be an integer
 
 ::
