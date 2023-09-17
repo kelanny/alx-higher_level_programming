@@ -129,5 +129,26 @@ class Rectangle(Base):
 
     def area(self):
         """Returns the area of an instance of a rectangle.
+
+        Args:
+            None.
+        Raises:
+            None.
+        Returns:
+            The product of the width and the height of the rectangle object.
         """
         return (self.__width * self.__height)
+
+    def display(self):
+        """Prints the Rectangle instance to stdout with character #.
+
+        Args:
+            None.
+        Raises:
+            None.
+        Returns:
+            None
+        """
+        for i in range(self.__height):
+            [print("#", end="") for _ in range(self.__width)]
+            print("")
