@@ -4,6 +4,7 @@ The module contain a Base class.
 """
 import json
 
+
 class Base:
     """This is a Base class representation.
     The class is the base of all other classes.
@@ -38,4 +39,3 @@ class Base:
         if list_dictionaries is None or list_dictionaries == []:
             return "[]"
         return json.dumps(list_dictionaries)
-
