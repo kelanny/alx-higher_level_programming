@@ -56,3 +56,11 @@ class Base:
             else:
                 list_dicts = [item.to_dictionary() for item in list_objs]
                 jfile.write(Base.to_json_string(list_dicts))
+
+    def from_json_string(json_string):
+        """Deserialize a JSON string representation to a python object.
+        """
+
+        if json_string is None or json_string == "[]":
+            return ([])
+        return (json.loads(json_string))
