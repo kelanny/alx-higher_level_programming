@@ -193,6 +193,16 @@ class Rectangle(Base):
                 elif key == "y":
                     self.__y = item
 
+    def to_dictionary(self):
+        """Return dictionary representation of Rectangle class."""
+        return ({
+            "id": self.id,
+            "width": self.__width,
+            "height": self.__height,
+            "x": self.__x,
+            "y": self.__y,
+            })
+
     def __str__(self):
         """Returns a string representation of the Rectangle instance.
         """
