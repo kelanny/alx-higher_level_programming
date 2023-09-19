@@ -153,9 +153,31 @@ class Rectangle(Base):
             [print("#", end="") for _ in range(self.__width)]
             print("")
 
+    def update(self, *args):
+        """Updates our class attributes with passed arguments."""
+        if args and len(args) != 0:
+            i = 0
+            for arg in args:
+                if i == 0:
+                    if arg is None:
+                        self.__init__(
+                            self.__width, self.__height,
+                            self.__x, self.__y)
+                    else:
+                        self.id = arg
+                elif i == 1:
+                    self.__width = arg
+                elif i == 2:
+                    self.__heigth = arg
+                elif i == 3:
+                    self.__x = arg
+                elif i == 4:
+                    self.__y = arg
+                i += 1
+
     def __str__(self):
         """Returns a string representation of the Rectangle instance.
         """
         return ("[Rectangle] ({}) {}/{} - {}/{}".format(self.id,
-    self.__x, self.__y,
-    self.__width, self.__height))
+                self.__x, self.__y,
+                self.__width, self.__height))
