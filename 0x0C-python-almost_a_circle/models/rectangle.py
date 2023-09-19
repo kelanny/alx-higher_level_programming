@@ -153,7 +153,7 @@ class Rectangle(Base):
             [print("#", end="") for _ in range(self.__width)]
             print("")
 
-    def update(self, *args):
+    def update(self, *args, **kwargs):
         """Updates our class attributes with passed arguments."""
         if args and len(args) != 0:
             i = 0
@@ -174,6 +174,24 @@ class Rectangle(Base):
                 elif i == 4:
                     self.__y = arg
                 i += 1
+
+        elif kwargs and len(kwargs) != 0:
+            for key, item in kwargs.items():
+                if key == "id":
+                    if item is None:
+                        self.__init__(
+                            self.__width, self.__height,
+                            self.__x, self.__y)
+                    else:
+                        self.id = item
+                elif key == "width":
+                    self.__width = item
+                elif key == "height":
+                    self.__height = item
+                elif key == "x":
+                    self.__x = item
+                elif key == "y":
+                    self.__y = item
 
     def __str__(self):
         """Returns a string representation of the Rectangle instance.
