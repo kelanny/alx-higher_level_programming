@@ -57,6 +57,7 @@ class Base:
                 list_dicts = [item.to_dictionary() for item in list_objs]
                 jfile.write(Base.to_json_string(list_dicts))
 
+    @staticmethod
     def from_json_string(json_string):
         """Deserialize a JSON string representation to a python object.
         """
@@ -64,3 +65,18 @@ class Base:
         if json_string is None or json_string == "[]":
             return ([])
         return (json.loads(json_string))
+
+    @classmethod
+    def create(cls, **dictionary):
+        """Create and return an instance with all attributes already set.
+        Args:
+            None.
+        """
+
+        if dictionary and dictionary != {}:
+            if cls.__name__ == "Rectangle":
+                new_class = cls(1, 1)
+            else:
+                new_class = cls(1)
+            new_class.update(**dictionary)
+            return (new_class)
