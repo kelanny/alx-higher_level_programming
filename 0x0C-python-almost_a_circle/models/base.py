@@ -3,7 +3,7 @@
 The module contain a Base class.
 """
 import json
-
+import csv
 
 class Base:
     """This is a Base class representation.
@@ -86,10 +86,56 @@ class Base:
         """Returns a list of instances from a file.
         """
 
-        filename = str(cls.__name__) + "json"
+        filename = str(cls.__name__) + ".json"
         try:
             with open(filename, 'r') as jfile:
                 list_dicts = Base.from_json_string(jfile.read())
                 return ([cls.create(**dic) for dic in list_dicts])
         except IOError:
             return([])
+
+    @classmethod
+    def save_to_file_csv(cls, list_objs):
+        """Saves serialized objects to a csv file.
+
+        Args:
+            list_objs (list): List of serialized objects.
+
+        """
+
+        filename = str(cls.__name__) + ".csv"
+
+        with open(filename, 'w') as csvfile:
+            if list_objs is None or list_objs == []:
+                csvfile.write("[]")
+            else:
+                if cls.__name__ == "Rectangle":
+                    fieldnames = ["id", "width", "height", "x", "y"]
+                else:
+                    fieldnames = ["id", "size", "x", "y"]
+                writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+                for obj in list_objs:
+                    writer.writerow(obj.to_dictionary())
+
+    @classmethod
+    def load_from_file_csv(cls):
+        """Return a list of classes instantiated from a CSV file.
+         Reads from `<cls.__name__>.csv`.
+
+        Returns:
+            If the file does not exist - an empty list.
+            Otherwise - a list of instantiated classes.
+        """
+        filename = cls.__name__ + ".csv"
+        try:
+            with open(filename, "r", newline="") as csvfile:
+                if cls.__name__ == "Rectangle":
+                    fieldnames = ["id", "width", "height", "x", "y"]
+                else:
+                    fieldnames = ["id", "size", "x", "y"]
+                list_dicts = csv.DictReader(csvfile, fieldnames=fieldnames)
+                list_dicts = [dict([key, int(value)] for key, value in obj.items())
+                                   for obj in list_dicts]
+                return ([cls.create(**d) for d in list_dicts])
+        except IOError:
+            return ([])
