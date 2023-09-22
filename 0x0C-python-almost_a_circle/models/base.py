@@ -4,6 +4,7 @@ The module contain a Base class.
 """
 import json
 import csv
+import turtle
 
 class Base:
     """This is a Base class representation.
@@ -92,7 +93,7 @@ class Base:
                 list_dicts = Base.from_json_string(jfile.read())
                 return ([cls.create(**dic) for dic in list_dicts])
         except IOError:
-            return([])
+            return ([])
 
     @classmethod
     def save_to_file_csv(cls, list_objs):
@@ -134,8 +135,47 @@ class Base:
                 else:
                     fieldnames = ["id", "size", "x", "y"]
                 list_dicts = csv.DictReader(csvfile, fieldnames=fieldnames)
-                list_dicts = [dict([key, int(value)] for key, value in obj.items())
-                                   for obj in list_dicts]
+                list_dicts = [dict([key, int(value)] for key,
+                              value in obj.items()) for obj in list_dicts]
                 return ([cls.create(**d) for d in list_dicts])
         except IOError:
             return ([])
+
+    @staticmethod
+    def draw(list_rectangles, list_squares):
+        """Draw Rectangles and squares using the turtle module.
+
+        Args:
+            list_rectangles (list): A list of Rectangle objects to draw.
+            list_squares (list): A list of Square objects to draw.
+        """
+
+        tt = turtle.Turtle()
+        tt.screen.bgcolor("black")
+        tt.pensize(3)
+        tt.shape("turtle")
+        tt.color("white")
+        for rectangle in list_rectangles:
+            tt.showturtle()
+            tt.up()
+            tt.goto(rectangle.__x, rect.__y)
+            tt.down()
+            for i in range(2):
+                tt.forward(rectangle.__width)
+                tt.left(90)
+                tt.forward(rectangle.__height)
+                tt.left(90)
+            tt.hideturtle()
+        tt.color("red")
+        for square in list_squares:
+            tt.showturtle()
+            tt.up()
+            tt.goto(square.__x, square.__y)
+            tt.down()
+            for i in range(2):
+                tt.forward(square.__width)
+                tt.left(90)
+                tt.forward(square.__height)
+                tt.left(90)
+            tt.hideturtle()
+        turtle.exitonclick()
