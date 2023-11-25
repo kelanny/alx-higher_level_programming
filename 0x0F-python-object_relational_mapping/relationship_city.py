@@ -7,7 +7,7 @@ from sys import argv
 from sqlalchemy import Column, Integer, String, create_engine, ForeignKey
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship
-from model_state import State, Base
+from relationship_state import State, Base
 
 
 
