@@ -1,0 +1,2 @@
+# Contains0 the complexity of find_peak algorithm
+(log(n))
