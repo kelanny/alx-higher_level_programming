@@ -14,40 +14,21 @@ def get_employee_todo_progress(emp_id):
         user_response = requests.get(user_url)
         user_data = user_response.json()
 
-        if user_response.status_code != 200 or not user_data:
-            print(f"Employee with ID {emp_id} not found.")
-            return
+        todo_url = f"https://jsonplaceholder.typicode.com/todos?userId={emp_id}"
+        todo_response = requests.get(todo_url)
+        todo_data = todo_response.json()
 
-        emp_name = user_data['name']
+        completed_tasks = []
+        for task in todo_data:
+            if task.get("completed"):
+                completed_tasks.append(task.get("title"))
 
-        url = f"https://jsonplaceholder.typicode.com/todos?userId={emp_id}"
-        todos_response = requests.get(url)
-        todos_data = todos_response.json()
+        print(f"Employee {} is done with tasks({}/{}):".format(
+            user_data.get("name"), len(completed_tasks), len(todo_data)))
 
-        if todos_response.status_code != 200 or not todos_data:
-            print(f"No TODO list found for employee ID {emp_id}.")
-            return
-
-        total_tasks = len(todos_data)
-        done_tasks = [task for task in todos_data if task['completed']]
-        no_tasks_done = len(done_tasks)
-        msg = "Employee {} is done with tasks({}/{}):".format(
-            emp_name, no_tasks_done, total_tasks
-        )
-        print(msg)
-        for task in done_tasks:
-            print(f"\t {task['title']}")
+        for task in completed_tasks:
+            print("\t {}".format(task))
 
     except Exception as e:
-        print(f"An error occurred: {e}")
+        pass
 
-
-if __name__ == "__main__":
-    if len(sys.argv) != 2:
-        print("Usage: python script.py <employee_id>")
-    else:
-        try:
-            emp_id = int(sys.argv[1])
-            get_employee_todo_progress(emp_id)
-        except ValueError:
-            print("Please provide a valid integer for employee ID.")
