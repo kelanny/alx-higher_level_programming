@@ -8,6 +8,7 @@ import sys
 
 
 def get_employee_todo_progress(emp_id):
+    """returns information about his/her TODO list progress."""
     try:
         user_url = f"https://jsonplaceholder.typicode.com/users/{emp_id}"
         user_response = requests.get(user_url)
@@ -35,4 +36,3 @@ def get_employee_todo_progress(emp_id):
 if __name__ == "__main__":
     if len(sys.argv) == 2 and sys.argv[1].isdigit():
         get_employee_todo_progress(sys.argv[1])
-
